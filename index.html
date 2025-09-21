@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,40 +9,43 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     
+  <!-- Enable Bootstrap RTL support -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.rtl.min.css" integrity="sha384-CfCrinSRH2IR6a4e6fy2q6ioOX7O6Mtm1L9vRvFZ1trBncWmMePhzvafv7oIcWiW" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <!-- Header / Hero Section -->
-  <header>
-    <div>
-      <!-- Ask Copilot to teach you about `.svg`. 🙂 You'll need to resize the logo with CSS. -->
-      <!-- <img src="img/intel-header-logo.svg" alt="Intel Logo" /> -->
-      <!-- Main Heading -->
-      <!-- <h1>
-        Sustainability Through the Ages
-      </h1>
-
-      Subheading / Description -->
-        <!-- Explore Intel's journey through time, discovering how our commitment to innovation has shaped a more sustainable future for technology and our planet. -->
-        <!-- Blue banner with Intel logo, main heading, and subheading -->
+  <!-- Enable RTL direction for the main content -->
+  <div class="container-fluid" dir="rtl">
+    <!-- Header / Hero Section -->
+    <header>
+      <div>
         <div class="banner">
-          <!-- Intel logo on the left -->
           <img src="img/intel-header-logo.svg" alt="Intel Logo" class="intel-logo">
-          <!-- Banner text -->
           <div class="banner-text">
             <h1>SUSTAINABILITY THROUGH THE AGES</h1>
             <p>Explore Intel's journey through time, discovering how our commitment to innovation has shaped a more sustainable future for technology and our planet.</p>
           </div>
         </div>
-      </p>
-    </div>
-  </header>
+      </div>
+    </header>
 
-  <!-- Timeline Cards Section -->
-  <section>
+    <!-- Bootstrap RTL grid example -->
+    <!-- <div class="row mb-4"> -->
+      <!-- In RTL, columns start from the right -->
+      <!-- <div class="col-md-4">
+        <div class="p-3 bg-primary text-white text-center">مرحبا بكم في إنتل</div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-3 bg-info text-white text-center">تاريخ الشركة</div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-3 bg-success text-white text-center">الإنجازات العالمية</div>
+      </div>
+    </div> -->
 
-  <div class="timeline-container">
+    <!-- Timeline Cards Section -->
+    <section>
+    <div class="timeline-container">
     <!-- Card 1: 1968 -->
     <div class="timeline-card">
       <h2>1968</h2>
@@ -168,7 +171,102 @@
         </p>
       </div>
     </div>
+    </section>
+    <p>Scroll to view timeline | Hover over cards to learn more!</p>
+  </div>
+
+                    <!-- New Bootstrap grid section: Three columns -->
+  <!-- This section uses Bootstrap's grid system to create three columns that stack on small screens -->
+  <section class="container mt-4">
+    <!-- Start a new row, align items to the top -->
+    <div class="row align-items-start">
+      <!-- First column: col-md-4 means it takes 1/3 of the row on medium screens and up -->
+      <div class="col-md-4 mb-3 d-flex">
+        <!-- Use d-flex to make all columns the same height -->
+        <div class="p-3 text-end rounded flex-fill d-flex flex-column justify-content-between" style="background: none;">
+          <!-- Changed text-center to text-end for right alignment -->
+          <h4>RISE Strategy</h4>
+          <p>As part of Intel’s RISE strategy (Responsible, Inclusive, Sustainable, and Enabling), the company has set ambitious goals for 2030. This includes raising industry standards in health, safety, and well-being, while driving progress in environmental sustainability and ethical governance.</p>
+          <!-- Learn more link at the bottom -->
+          <a href="#" class="mt-3">Learn more</a>
+        </div>
+      </div>
+      <!-- Second column -->
+      <div class="col-md-4 mb-3 d-flex">
+        <div class="p-3 text-end rounded flex-fill d-flex flex-column justify-content-between" style="background: none;">
+          <h4>Commitment</h4>
+          <p>In 2022, Intel pledged to achieve net positive water usage, zero total waste to landfills, and 100% renewable electricity use across global operations by 2040. This is part of its wider responsibility to address climate change and promote sustainability.</p>
+          <a href="#" class="mt-3">Learn more</a>
+        </div>
+      </div>
+      <!-- Third column -->
+      <div class="col-md-4 mb-3 d-flex">
+        <div class="p-3 text-end rounded flex-fill d-flex flex-column justify-content-between" style="background: none;">
+          <h4>Water and Waste</h4>
+          <p>Intel is committed to achieving net positive water usage and zero total waste to landfills by 2040. This commitment is part of the company's broader sustainability goals and its responsibility to the environment.</p>
+          <a href="#" class="mt-3">Learn more</a>
+        </div>
+      </div>
+    </div>
+    <!-- The columns will stack vertically on small screens for better mobile compatibility -->
   </section>
-  <p>Scroll to view timeline | Hover over cards to learn more!</p>
+
+  <!-- JavaScript to handle RTL direction based on Google Translate language -->
+<script>
+// List of RTL language codes
+const rtlLangs = ["ar", "he", "fa", "ur"];
+
+function isRtlLang(lang) {
+  return rtlLangs.includes(lang);
+}
+
+function getPageLang() {
+  // Google Translate sets 'lang' on <html> or <body>
+  return document.documentElement.lang || document.body.lang || "en";
+}
+
+function updateRtlModeAndLogo() {
+  const lang = getPageLang().split('-')[0];
+  const mainContainer = document.querySelector('.container-fluid');
+  const banner = document.querySelector('.banner');
+  const logo = document.querySelector('.intel-logo');
+  if (!mainContainer || !banner || !logo) return;
+  // RTL/LTR direction
+  if (isRtlLang(lang)) {
+    mainContainer.setAttribute('dir', 'rtl');
+    document.body.style.direction = 'rtl';
+  } else {
+    mainContainer.setAttribute('dir', 'ltr');
+    document.body.style.direction = 'ltr';
+  }
+  // Move logo to top if translated (not English)
+  if (lang !== 'en') {
+    // If logo is not already at the top, move it
+    if (banner.firstChild !== logo) {
+      banner.insertBefore(logo, banner.firstChild);
+      logo.style.display = 'block';
+      logo.style.margin = '0 auto 20px auto'; // Center and add space below
+    }
+    banner.style.flexDirection = 'column';
+    banner.style.textAlign = 'center';
+  } else {
+    // Restore default layout for English
+    banner.style.flexDirection = '';
+    logo.style.margin = '';
+    banner.style.textAlign = '';
+  }
+}
+
+// Observe DOM changes to detect Google Translate language switch
+const observer = new MutationObserver(() => {
+  updateRtlModeAndLogo();
+});
+observer.observe(document.documentElement, { attributes: true, childList: false, subtree: false });
+
+// Also check on page load
+window.addEventListener('DOMContentLoaded', updateRtlModeAndLogo);
+// And periodically in case Google Translate changes lang late
+setInterval(updateRtlModeAndLogo, 1000);
+</script>
 </body>
 </html>
